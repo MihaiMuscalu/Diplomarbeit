@@ -1,28 +1,28 @@
-// import React,{useState, useEffect} from 'react';
+import React from 'react';
 
 
-// const loadData = () => {
+const loadData = () => {
 
-//   fetch("https://672255ce2108960b9cc40294.mockapi.io/data").then((result) => {
-//       result.json().then((data) => {
-//           fillTable(data);
-//       })
-//   })
-// } 
+  fetch("https://672255ce2108960b9cc40294.mockapi.io/data").then((result) => {
+      result.json().then((data) => {
+          fillTable(data);
+      })
+  })
+} 
 
-// const fillTable = (data) => {
-//   let Werkzeug = ""
-//   let Adresse = ""
+const fillTable = (data) => {
+  let Werkzeug = ""
+  let Adresse = ""
 
-//   for (let i = 0; i <9; i++) {
-//       Werkzeug = '<td className="border-3 border-green-600 py-8 px-4">' + data[i].first +'</td>';
-//       Adresse = '<td className="border-3 border-green-600 py-8 px-4">'+ data[i].second +'</td>'
-//       document.getElementById("rows").innerHTML += "<tr>" + Werkzeug + Adresse +"</tr>";
+  for (let i = 0; i <=10; i++) {
+      Werkzeug = '<td class="border-3 border-green-600 py-8 px-4">' + data[i].first +'</td>';
+      Adresse = '<td class="border-3 border-green-600 py-8 px-4">'+ data[i].second +'</td>'
+      document.getElementById("rows").innerHTML += "<tr class='bg-white text-green-600 font-bold text-lg text-center'>" + Werkzeug + Adresse +"</tr>";
 
-//   };
+  };
 
-// }
-
+}
+loadData();
 
 
 function Table() {
@@ -36,17 +36,12 @@ function Table() {
           </tr>
         </thead>
         <tbody id="rows">
-        {Array(8).fill().map((_, idx) => (
-            <tr key={idx}>
-              <td className="border-3 border-green-600 py-8 px-4"></td>
-              <td className="border-3 border-green-600 py-8 px-4"></td>
-            </tr>
-          ))}
+      
         </tbody>
       </table>
     </div>
   );
 }
 
-//loadData();
+
 export default Table;
