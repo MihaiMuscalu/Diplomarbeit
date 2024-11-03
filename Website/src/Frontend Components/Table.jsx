@@ -9,7 +9,7 @@ const loadData = () => {
       })
   })
 } 
-
+//Loads the API Data into the HTML Element with the ID Rows
 const fillTable = (data) => {
   let Werkzeug = ""
   let Adresse = ""
@@ -18,16 +18,18 @@ const fillTable = (data) => {
       Werkzeug = '<td class="border-3 border-green-600 py-8 px-4">' + data[i].first +'</td>';
       Adresse = '<td class="border-3 border-green-600 py-8 px-4">'+ data[i].second +'</td>'
       document.getElementById("rows").innerHTML += "<tr class='bg-white text-green-600 font-bold text-lg text-center'>" + Werkzeug + Adresse +"</tr>";
-
+//BUG: If the function (className) is left as is and not changed to (class), it will break the code as Tailwind does not recognize it.
   };
 
 }
+//Call of load Data function to load the API data and put it into the HTML Element
 loadData();
 
 
 function Table() {
   return (
     <div  className="w-3/4 mx-auto"> {/* Adjusted width and centered */}
+    {/* Main Table */}
       <table className="w-full border border-green-600">
         <thead>
           <tr className="bg-white text-green-600 font-bold text-2xl">
@@ -36,7 +38,7 @@ function Table() {
           </tr>
         </thead>
         <tbody id="rows">
-      
+        {/* API Data comes here */}
         </tbody>
       </table>
     </div>
