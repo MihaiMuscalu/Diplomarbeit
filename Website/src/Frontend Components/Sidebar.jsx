@@ -12,6 +12,7 @@ function Sidebar() {
         onClick={() => console.log("Button clicked!")}/>
 
         <CustomButton
+        to="/Kontakt"
         text="Strele"
         width="w-2/4"           
         bgColor="bg-green-600"   
