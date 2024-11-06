@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
-          <header className="bg-green-600 text-white flex items-end justify-end py-2 mt-20">
+          <header className="bg-[#007945] text-white flex items-end justify-end py-2 mt-20">
             {/* Placeholder for possible left-aligned content */}
             <div className="w-10"></div>
     

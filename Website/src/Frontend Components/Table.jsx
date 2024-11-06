@@ -20,19 +20,19 @@ function Table() {
   return (
     <div className="w-3/4 mx-auto">
       {/* Main Table */}
-      <table className="w-full border border-green-600">
+      <table className="w-full border border-[#007945]">
         <thead>
-          <tr className="bg-white text-green-600 font-bold text-2xl">
-            <th className="border-3 border-green-600 py-5 px-6">Werkzeug</th>
-            <th className="border-3 border-green-600 py-5 px-6">Adresse</th>
+          <tr className="bg-white text-[#007945] font-bold text-2xl">
+            <th className="border-3 border-[#007945] py-5 px-6">Werkzeug</th>
+            <th className="border-3 border-[#007945] py-5 px-6">Adresse</th>
           </tr>
         </thead>
         <tbody>
           {/* Map over the fetched data to display it */}
           {data.slice(0, 10).map((item, index) => (
             <tr key={item.id} className="bg-white text-black font-bold text-lg text-center">
-              <td className="border-3 border-green-600 py-8 px-4">{item.first}</td>
-              <td className="border-3 border-green-600 py-8 px-4">{item.second}</td>
+              <td className="border-3 border-[#007945] py-8 px-4">{item.first}</td>
+              <td className="border-3 border-[#007945] py-8 px-4">{item.second}</td>
             </tr>
           ))}
         </tbody>

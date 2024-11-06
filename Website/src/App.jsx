@@ -2,7 +2,8 @@ import MainPage from "./Pages/MainPage"
 
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Kontakt from "./Pages/KontaktPage";
+import StrelePage from "./Pages/StrelePage";
+import KontaktPage from "./Pages/KontaktPage";
 
 
 const router = createBrowserRouter([
@@ -11,8 +12,12 @@ const router = createBrowserRouter([
       element:<MainPage/>,
     },
     {
+      path: "/Strele",
+      element:<StrelePage/>,
+    },
+    {
       path: "/Kontakt",
-      element:<Kontakt/>,
+      element:<KontaktPage/>,
     },
   ]);
 function App() {

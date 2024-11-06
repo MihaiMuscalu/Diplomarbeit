@@ -5,17 +5,27 @@ function Sidebar() {
       <CustomButton
         text="Startseite"
         width="w-3/4"           // Change width
-        bgColor="bg-green-600"   // Change background color
+        bgColor="bg-[#007945]"   // Change background color
         textColor="text-white"  // Change text color
         borderColor="" // Change border color
         hoverTranslate="translate-x-2" // Change hover animation
         onClick={() => console.log("Button clicked!")}/>
 
         <CustomButton
-        to="/Kontakt"
+        to="/Strele"
         text="Strele"
         width="w-2/4"           
-        bgColor="bg-green-600"   
+        bgColor="bg-[#007945]"   
+        textColor="text-white"  
+        borderColor="" 
+        hoverTranslate="translate-x-2" 
+        onClick={() => console.log("Button clicked!")}/>
+
+        <CustomButton
+        to="/Kontakt"
+        text="Kontakt"
+        width="w-3/4"           
+        bgColor="bg-[#007945]"   
         textColor="text-white"  
         borderColor="" 
         hoverTranslate="translate-x-2" 
@@ -24,16 +34,7 @@ function Sidebar() {
         <CustomButton
         text="Example"
         width="w-3/4"           
-        bgColor="bg-green-600"   
-        textColor="text-white"  
-        borderColor="" 
-        hoverTranslate="translate-x-2" 
-        onClick={() => console.log("Button clicked!")}/>
-
-        <CustomButton
-        text="Example"
-        width="w-3/4"           
-        bgColor="bg-green-600"   
+        bgColor="bg-[#007945]"   
         textColor="text-white"  
         borderColor="" 
         hoverTranslate="translate-x-2" 

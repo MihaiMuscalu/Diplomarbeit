@@ -3,11 +3,11 @@ import Footer from '../Frontend Components/Footer';
 import Image from '../Frontend Components/Images/strele.png';
 import Sidebar from '../Frontend Components/Sidebar';
 
-const Kontakt = () => {
+const KontaktPage = () => {
   return (
     <div className="min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
-          <header className="bg-green-600 text-white flex items-end justify-end py-2 mt-20">
+          <header className="bg-[#007945] text-white flex items-end justify-end py-2 mt-20">
             {/* Placeholder for possible left-aligned content */}
             <div className="w-10"></div>
     
@@ -60,7 +60,6 @@ const Kontakt = () => {
           src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d86403.66909339734!2d9.644095304847482!3d47.409704671133454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x479b14c05d8df785%3A0x52f108ce7e2ea04a!2sstrele+installationen!3m2!1d47.409726!2d9.714134999999999!5e0!3m2!1sde!2sus!4v1460365147806"
           width="600"
           height="450"
-          frameBorder="0"
           style={{ border: 0 }}
           allowFullScreen=""
         ></iframe>
@@ -78,16 +77,10 @@ const Kontakt = () => {
             07:00 - 11.30 Uhr
           </p>
         </div>
-
-        {/* Links */}
-        <ul className="links mt-8">
-          <li>
-            <a href="/de/impressum.html" title="Strele Installationen GmbH in Dornbirn" className="text-blue-500 hover:underline">
-              Impressum
-            </a>
-          </li>
-        </ul>
       </main>
+
+
+           
               {/* Footer contact information */}
               <Footer />
             </div>
@@ -96,4 +89,4 @@ const Kontakt = () => {
   );
 };
 
-export default Kontakt;
+export default KontaktPage;
