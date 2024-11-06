@@ -18,8 +18,8 @@ const fillTable = (data) => {
   for (let i = 0; i <=10; i++) {
       Werkzeug = '<td class="border-3 border-green-600 py-8 px-4">' + data[i].first +'</td>';
       Adresse = '<td class="border-3 border-green-600 py-8 px-4">'+ data[i].second +'</td>';
-      Info = '<td class="border-3 border-green-600 py-8 px-4"> <button className="  text-white transition-transform  duration-100  ease-in-out transform active:scale-90 bg-green-600 py-2 px-4 w-3/4 h-10 text-center font-bold m-1">Informationen</button></td>';
-      document.getElementById("rows").innerHTML += "<tr class='bg-white text-black font-bold text-lg text-center'>" +Werkzeug + Adresse +Info+ "</tr>";
+      // Info = '<td class="border-3 border-green-600 py-8 px-4"> <button className="  text-white transition-transform  duration-100  ease-in-out transform active:scale-90 bg-green-600 py-2 px-4 w-3/4 h-10 text-center font-bold m-1">Informationen</button></td>';
+      document.getElementById("rows").innerHTML += "<tr class='bg-white text-black font-bold text-lg text-center'>" +Werkzeug + Adresse + "</tr>";
 //BUG: If the function (className) is left as is and not changed to (class), it will break the code as Tailwind does not recognize it.
   };
 
@@ -37,7 +37,7 @@ function Table() {
           <tr className="bg-white text-green-600 font-bold text-2xl">
             <th className="border-3 border-green-600 py-5 px-6">Werkzeug</th>
             <th className="border-3 border-green-600 py-5 px-6">Adresse</th>
-            <th className="border-3 border-green-600 py-5 px-6">Mehr Info</th>
+            {/* <th className="border-3 border-green-600 py-5 px-6">Mehr Info</th> */}
             
           </tr>
         </thead>
