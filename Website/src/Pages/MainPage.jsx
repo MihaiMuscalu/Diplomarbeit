@@ -1,8 +1,9 @@
 import React from 'react';
-import Table from './Frontend Components/Table';
-import Footer from './Frontend Components/Footer';
-import Image from  "./Frontend Components/Images/strele.png"
-import Sidebar from './Frontend Components/Sidebar';
+import Table from '../Frontend Components/Table';
+import Footer from '../Frontend Components/Footer';
+import Image from '../Frontend Components/Images/strele.png';
+import Sidebar from '../Frontend Components/Sidebar';
+
 
 const Home = () => {
     return (
