@@ -7,7 +7,7 @@ import Sidebar from '../Frontend Components/Sidebar';
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-white">
+        <div className=" relative min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
           <header className="bg-[#007945] text-white flex items-end justify-end py-2 mt-20">
             {/* Placeholder for possible left-aligned content */}
@@ -15,12 +15,13 @@ const Home = () => {
     
             {/* Centered text */}
             <div className="text-center mr-2">
-              <h1 className="text-base font-bold">Wärmstes zu empfehlen.</h1>
+              <h1 className=" pt-4 text-base font-bold h-10">Wärmstes zu empfehlen.</h1>
             </div>
-    
+            <div className="w-80"></div>
+            <div className="w-32"></div>
             
             {/* Right-aligned logo */}
-            <img src={Image} alt="Logo" className="h-20 mr-48" />
+            <img src={Image} alt="Logo" className="absolute h-20 mr-48" />
           </header>
     
           {/* Main content area with sidebar and table */}

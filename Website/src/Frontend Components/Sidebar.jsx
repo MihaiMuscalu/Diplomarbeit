@@ -6,7 +6,7 @@ function Sidebar({onLogout}) {
 
       {/* Main Webpage */}
       <CustomButton
-        to="/Main"
+        to="/"
         text="Startseite"
         width="w-3/4"           // Change width
         bgColor="bg-[#007945]"   // Change background color
