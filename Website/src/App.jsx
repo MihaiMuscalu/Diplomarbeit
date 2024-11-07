@@ -5,11 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
 
-import React, { useState } from 'react';
-import Sidebar from './Sidebar';
-import Table from './Table';
-
-
 
 const router = createBrowserRouter([
     {
@@ -27,11 +22,6 @@ const router = createBrowserRouter([
   ]);
 function App() {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const handleLogout = () => {
-    setIsAuthenticated(false); // Set authenticated state to false when logged out
-    console.log("Logged out!");
-  };
 
   return (
     <RouterProvider router= {router}/>
