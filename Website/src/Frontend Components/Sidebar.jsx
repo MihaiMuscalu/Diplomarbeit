@@ -1,8 +1,12 @@
 import CustomButton from "./SidebarButton";
-function Sidebar() {
+import React from "react";
+function Sidebar({onLogout}) {
   return (
     <div className="w-1/5 text-white flex flex-col items-start py-4 mt-10">
+
+      {/* Main Webpage */}
       <CustomButton
+        to="/Main"
         text="Startseite"
         width="w-3/4"           // Change width
         bgColor="bg-[#007945]"   // Change background color
@@ -31,14 +35,17 @@ function Sidebar() {
         hoverTranslate="translate-x-2" 
         onClick={() => console.log("Button clicked!")}/>
 
+
+        {/* Logout Button */}
         <CustomButton
-        text="Example"
-        width="w-3/4"           
-        bgColor="bg-[#007945]"   
-        textColor="text-white"  
-        borderColor="" 
-        hoverTranslate="translate-x-2" 
-        onClick={() => console.log("Button clicked!")}/>
+        text="Logout"
+        width="w-3/4"
+        bgColor="bg-red-500"
+        textColor="text-white"
+        borderColor=""
+        hoverTranslate="translate-x-2"
+        onClick={onLogout}  // Logout on click
+        />
       
       {/* Additional buttons */}
     </div>

@@ -1,33 +1,56 @@
-import MainPage from "./Pages/MainPage"
+// Extensions import
+import React, { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// Webpages import
+import MainPage from "./Pages/MainPage";
 import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
+import LoginPage from"./Pages/LoginPage";
 
 
-const router = createBrowserRouter([
+
+
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Declare state for Authentication
+
+  console.log(isAuthenticated);
+
+  // Router setup
+  const router = createBrowserRouter([
     {
-      path:"/",
-      element:<MainPage/>,
+      path: "/Main",
+      element: <MainPage />,
     },
     {
       path: "/Strele",
-      element:<StrelePage/>,
+      element: <StrelePage />,
     },
     {
       path: "/Kontakt",
-      element:<KontaktPage/>,
+      element: <KontaktPage />,
+    },
+    {
+      path: "/",
+      element: <LoginPage setIsAuthenticated={setIsAuthenticated} />,
     },
   ]);
-function App() {
-
 
   return (
-    <RouterProvider router= {router}/>
+      <RouterProvider router={router} >
+      {/* Conditional rendering based on authentication state */}
+      {isAuthenticated ? (
+        <Link to="/Main" />  // Show the table if authenticated
+      ) : (
+        <Link to="/" />  // Show the login form if not authenticated
+      )}
+
+      
+      <LoginPage setIsAuthenticated={setIsAuthenticated} />
+      </RouterProvider>
   );
 }
-
-
 
 export default App;

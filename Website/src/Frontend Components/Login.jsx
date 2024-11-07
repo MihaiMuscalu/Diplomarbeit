@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import config from './config';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -7,7 +8,7 @@ function Login({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Hardcoded credentials (for demo purposes)
-    if (username === 'config.username' && password === 'config.password') {
+    if (username === config.username && password === config.password) {
       onLogin(); // Call onLogin function passed from parent (App) to set authentication state
     } else {
       alert('Invalid credentials');
