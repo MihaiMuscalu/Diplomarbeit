@@ -1,5 +1,4 @@
 // Extensions import
-import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -9,14 +8,12 @@ import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
 import LoginPage from"./Pages/LoginPage";
 
-
-
+import { useAuth } from './Frontend Components/Auth';  // Import useAuth hook
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Declare state for Authentication
 
-  console.log(isAuthenticated);
+  const isAuthenticated = useAuth();
 
   // Router setup
   const router = createBrowserRouter([
@@ -34,7 +31,7 @@ function App() {
     },
     {
       path: "/",
-      element: <LoginPage setIsAuthenticated={setIsAuthenticated} />,
+      element: <LoginPage />,
     },
   ]);
 
@@ -48,7 +45,6 @@ function App() {
       )}
 
       
-      <LoginPage setIsAuthenticated={setIsAuthenticated} />
       </RouterProvider>
   );
 }

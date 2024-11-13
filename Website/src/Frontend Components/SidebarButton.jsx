@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CustomButton = ({
-  text = "Button",
-  width = "w-3/4",
-  bgColor = "bg-white",
-  textColor = "text-black",
-  borderColor = "border-black",
-  hoverTranslate = "translate-x-2",
-  to = "/", // default route to navigate to
+  text = "",
+  width = "",
+  bgColor = "",
+  textColor = "",
+  borderColor = "",
+  hoverTranslate = "",
+  to = "", // default route to navigate to
   onClick,
 }) => {
   return (
