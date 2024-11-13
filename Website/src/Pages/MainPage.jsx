@@ -3,9 +3,15 @@ import Table from '../Frontend Components/Table';
 import Footer from '../Frontend Components/Footer';
 import Image from '../Frontend Components/Images/strele.png';
 import Sidebar from '../Frontend Components/Sidebar';
-
+import { logout ,checkAuth} from '../Frontend Components/Auth'; 
 
 const Home = () => {
+
+
+  const handleLogout = () => {
+    logout();  // Call logout function
+  };
+
     return (
         <div className=" relative min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
@@ -27,7 +33,7 @@ const Home = () => {
           {/* Main content area with sidebar and table */}
           <div className="flex">
             {/* Sidebar on the left */}
-            <Sidebar />
+            <Sidebar isAuth={checkAuth} onLogout={handleLogout}/>
             
             {/* Main content on the right */}
             <div className="flex-1 p-4">

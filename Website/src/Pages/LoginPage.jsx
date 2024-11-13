@@ -4,19 +4,19 @@ import Image from '../Frontend Components/Images/strele.png';
 import Sidebar from '../Frontend Components/Sidebar';
 import Login from '../Frontend Components/Login';
 import { useNavigate } from 'react-router-dom';
+import { login, logout ,checkAuth} from '../Frontend Components/Auth'; 
 
-const LoginPage = ({ setIsAuthenticated }) => {
+const LoginPage = () => {
     const navigate = useNavigate();
       // Login function to handle authentication
-  const handleLogin = () => {
-    navigate('/Main');
-    setIsAuthenticated(true);
-  };
-
-  // Logout function to handle de-authentication
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
+      const handleLogin = () => {
+        login();  // Call login function
+        navigate('/Main');
+      };
+    
+      const handleLogout = () => {
+        logout();  // Call logout function
+      };
 
   
 
@@ -41,7 +41,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
           {/* Main content area with sidebar and table */}
           <div className="flex">
             {/* Sidebar on the left */}
-            <Sidebar onLogout={handleLogout} />
+            <Sidebar isAuth={checkAuth} onLogout={handleLogout} />
             
             {/* Main content on the right */}
             <div className="flex-1 p-4">

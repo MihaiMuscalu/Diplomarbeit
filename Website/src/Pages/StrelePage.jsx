@@ -3,8 +3,14 @@ import Footer from '../Frontend Components/Footer';
 import ImageLogo from '../Frontend Components/Images/strele.png';
 import Image from '../Frontend Components/Images/strele-bassenaandrea-fritz-pingerra.jpg';
 import Sidebar from '../Frontend Components/Sidebar';
+import { logout,checkAuth } from '../Frontend Components/Auth'; 
 
 const StrelePage = () => {
+  
+    
+      const handleLogout = () => {
+        logout();  // Call logout function
+      };
   return (
     <div className="min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
@@ -26,10 +32,13 @@ const StrelePage = () => {
           {/* Main content area with sidebar and table */}
           <div className="flex">
             {/* Sidebar on the left */}
-            <Sidebar />
+            <Sidebar isAuth={checkAuth} onLogout={handleLogout}/>
             
             {/* Main content on the right */}
             <div className="flex-1 p-4">
+
+              
+             {/*Main*/}
             <main className="gallery ng-scope">
             {/* Text Section 1 */}
             <div className="text mb-6">
