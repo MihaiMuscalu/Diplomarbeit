@@ -1,19 +1,27 @@
 import React from 'react';
-import Table from '../Frontend Components/Table';
 import Footer from '../Frontend Components/Footer';
 import Image from '../Frontend Components/Images/strele.png';
 import Sidebar from '../Frontend Components/Sidebar';
-import { logout ,checkAuth} from '../Frontend Components/Auth'; 
+import Login from '../Frontend Components/Login';
+import { useNavigate } from 'react-router-dom';
+import { login, logout ,checkAuth} from '../Frontend Components/Auth'; 
 
-const Home = () => {
+const LoginPage = () => {
+    const navigate = useNavigate();
+      // Login function to handle authentication
+      const handleLogin = () => {
+        login();  // Call login function
+        navigate('/Main');
+      };
+    
+      const handleLogout = () => {
+        logout();  // Call logout function
+      };
 
-
-  const handleLogout = () => {
-    logout();  // Call logout function
-  };
+  
 
     return (
-        <div className=" relative min-h-screen bg-white">
+        <div className="min-h-screen bg-white">
           {/* Header at the top, spanning full width */}
           <header className="bg-[#007945] text-white flex items-end justify-end py-2 mt-20">
             {/* Placeholder for possible left-aligned content */}
@@ -33,13 +41,13 @@ const Home = () => {
           {/* Main content area with sidebar and table */}
           <div className="flex">
             {/* Sidebar on the left */}
-            <Sidebar isAuth={checkAuth} onLogout={handleLogout}/>
+            <Sidebar isAuth={checkAuth} onLogout={handleLogout} />
             
             {/* Main content on the right */}
             <div className="flex-1 p-4">
               <main className="flex justify-center items-center mt-10">
-                {/* Main Table */}
-                <Table />
+                {/* Login */}
+                <Login onLogin={handleLogin} />
               </main>
               {/* Footer contact information */}
               <Footer />
@@ -49,4 +57,4 @@ const Home = () => {
       );
 };
 
-export default Home;
+export default LoginPage;
