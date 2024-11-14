@@ -1,8 +1,8 @@
 import React from 'react';
-import Footer from '../Frontend Components/Footer';
+import Footer from '../Frontend Components/UI/Footer';
 import Image from '../Frontend Components/Images/strele.png';
-import Sidebar from '../Frontend Components/Sidebar';
-import { logout ,checkAuth} from '../Frontend Components/Auth'; 
+import Sidebar from '../Frontend Components/Menu/Sidebar';
+import { logout ,checkAuth} from '../Frontend Components/Security/Auth'; 
 
 const KontaktPage = () => {
     

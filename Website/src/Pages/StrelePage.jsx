@@ -1,9 +1,9 @@
 import React from 'react';
-import Footer from '../Frontend Components/Footer';
+import Footer from '../Frontend Components/UI/Footer';
 import ImageLogo from '../Frontend Components/Images/strele.png';
 import Image from '../Frontend Components/Images/strele-bassenaandrea-fritz-pingerra.jpg';
-import Sidebar from '../Frontend Components/Sidebar';
-import { logout,checkAuth } from '../Frontend Components/Auth'; 
+import Sidebar from '../Frontend Components/Menu/Sidebar';
+import { logout,checkAuth } from '../Frontend Components/Security/Auth'; 
 
 const StrelePage = () => {
   

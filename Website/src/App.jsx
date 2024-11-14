@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import MainPage from "./Pages/MainPage";
 import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
-import LoginPage from"./Pages/LoginPage";
+import LoginPage from "./Pages/LoginPage";
 
-import { useAuth } from './Frontend Components/Auth';  // Import useAuth hook
+import { useAuth } from './Frontend Components/Security/Auth';  // Import useAuth hook
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
   ]);
 
   return (
-      <RouterProvider router={router} >
+    <RouterProvider router={router} >
       {/* Conditional rendering based on authentication state */}
       {isAuthenticated ? (
         <Link to="/Main" />  // Show the table if authenticated
@@ -44,8 +44,8 @@ function App() {
         <Link to="/" />  // Show the login form if not authenticated
       )}
 
-      
-      </RouterProvider>
+
+    </RouterProvider>
   );
 }
 

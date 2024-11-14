@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from '../Frontend Components/Footer';
+import Footer from '../Frontend Components/UI/Footer';
 import Image from '../Frontend Components/Images/strele.png';
-import Sidebar from '../Frontend Components/Sidebar';
-import Login from '../Frontend Components/Login';
+import Sidebar from '../Frontend Components/Menu/Sidebar';
+import Login from '../Frontend Components/Security/Login';
 import { useNavigate } from 'react-router-dom';
-import { login, logout ,checkAuth} from '../Frontend Components/Auth'; 
+import { login, logout ,checkAuth} from '../Frontend Components/Security/Auth'; 
 
 const LoginPage = () => {
     const navigate = useNavigate();
