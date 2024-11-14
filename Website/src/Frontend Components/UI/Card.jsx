@@ -1,4 +1,4 @@
-function Card({ name, role }) {
+const Card = ({ name, role }) => {
     return(
         <div className="flex flex-col items-center border-4 border-black rounded-md w-24 h-24 p-2 my-2">
             <div className="flex items-center justify-center w-12 h-12 border-2 border-gray-700 rounded-full">
@@ -10,4 +10,4 @@ function Card({ name, role }) {
     </div>
     );
 }
-export default Card();
+export default Card;
