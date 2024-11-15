@@ -2,7 +2,7 @@ import React from 'react';
 
 import Login from '../Frontend Components/Security/Login';
 import { useNavigate } from 'react-router-dom';
-import { login, logout ,checkAuth} from '../Frontend Components/Security/Auth'; 
+import { login} from '../Frontend Components/Security/Auth'; 
 
 const LoginPage = () => {
     const navigate = useNavigate();
