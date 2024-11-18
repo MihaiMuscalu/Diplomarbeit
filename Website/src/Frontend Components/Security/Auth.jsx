@@ -1,7 +1,8 @@
 // src/auth.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Global authentication state
+// eslint-disable-next-line
 let isAuthenticated = false;
 
 // Functions to get, set, and subscribe to auth status
