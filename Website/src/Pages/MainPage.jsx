@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Table from '../Frontend Components/UI/Table';
+import React, { useState } from "react";
+import Table from "../Frontend Components/UI/Table";
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState(''); // State for search input
-  const [searchColumn, setSearchColumn] = useState('first'); // State for selected column
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const [searchColumn, setSearchColumn] = useState("first"); // State for selected column
 
   return (
     <main className="flex flex-col justify-center items-center mt-10">
@@ -20,7 +20,9 @@ const Home = () => {
         {/* Search Input */}
         <input
           type="text"
-          placeholder={`Search in ${searchColumn === 'first' ? 'Werkzeug' : 'Adresse'}`}
+          placeholder={`Search in ${
+            searchColumn === "first" ? "Werkzeug" : "Adresse"
+          }`}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)} // Update search query
           className="p-2 border border-gray-400 rounded"

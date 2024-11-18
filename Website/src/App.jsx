@@ -8,9 +8,7 @@ import KontaktPage from "./Pages/KontaktPage";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Layout";
 
-
 function App() {
-
   // Router setup
   const router = createBrowserRouter([
     {
@@ -37,11 +35,7 @@ function App() {
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
-
-
