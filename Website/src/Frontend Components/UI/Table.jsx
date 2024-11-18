@@ -1,7 +1,7 @@
 // Table.jsx
 import React, { useState, useEffect } from "react";
 
-function Table() {
+function Table({searchQuery, searchColumn}) {
   const [data, setData] = useState([]); // Store fetched data
 
   // Fetch data when authenticated
@@ -11,6 +11,11 @@ function Table() {
       .then((data) => setData(data)) // Set the fetched data
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  const filteredData = data.filter(
+    (item) =>
+      item[searchColumn]?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="w-3/4 mx-auto">
@@ -22,7 +27,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.slice(0, 10).map((item) => (
+          {filteredData.slice(0, 10).map((item) => (
             <tr key={item.id} className="bg-white text-black font-bold text-lg text-center">
               <td className="border-3 border-[#007945] py-8 px-4">{item.first}</td>
               <td className="border-3 border-[#007945] py-8 px-4">{item.second}</td>
