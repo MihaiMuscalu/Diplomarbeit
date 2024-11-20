@@ -1,7 +1,11 @@
+import { checkAuth, logout } from "../Security/Auth";
 import CustomButton from "./SidebarButton";
 import React from "react";
-function Sidebar({ isAuth, onLogout }) {
-  const isAuthenticated = isAuth();
+
+function Sidebar() {
+  const isAuthenticated = checkAuth;
+  const onLogout = logout;
+
   return (
     <div className="w-1/5 text-white flex flex-col items-start py-4 mt-10">
       {/* Main Webpage */}
@@ -14,7 +18,7 @@ function Sidebar({ isAuth, onLogout }) {
         textColor="text-white" // Change text color
         borderColor="" // Change border color
         hoverTranslate="translate-x-4" // Change hover animation
-        onClick={console.log(isAuth)}
+        onClick={() => console.log(checkAuth())}
       />
       <CustomButton
         to="/Strele"
@@ -24,7 +28,7 @@ function Sidebar({ isAuth, onLogout }) {
         textColor="text-white"
         borderColor=""
         hoverTranslate="translate-x-3"
-        onClick={console.log(isAuth)}
+        onClick={() => console.log(checkAuth())}
       />
       <CustomButton
         to="/Kontakt"
@@ -34,7 +38,7 @@ function Sidebar({ isAuth, onLogout }) {
         textColor="text-white"
         borderColor=""
         hoverTranslate="translate-x-3"
-        onClick={console.log(isAuth)}
+        onClick={() => console.log(checkAuth())}
       />
       {/* Logout Button */}
       <CustomButton

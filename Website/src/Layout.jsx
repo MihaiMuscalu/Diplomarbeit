@@ -4,14 +4,10 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Frontend Components/Menu/Sidebar";
 import Footer from "./Frontend Components/UI/Footer";
-import { checkAuth, logout } from "./Frontend Components/Security/Auth";
+
 import ImageLogo from "./Frontend Components/Images/strele.png";
 
 const Layout = () => {
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
     <div className="relative min-h-screen bg-white">
       {/* Header */}
@@ -30,7 +26,7 @@ const Layout = () => {
       {/* Main content area with sidebar */}
       <div className="flex">
         {/* Sidebar */}
-        <Sidebar isAuth={checkAuth} onLogout={handleLogout} />
+        <Sidebar />
 
         {/* Main content */}
         <div className="flex-1 p-4">

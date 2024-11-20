@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const CustomButton = ({
   text = "",
@@ -12,11 +12,11 @@ const CustomButton = ({
   onClick,
 }) => {
   return (
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       onClick={onClick}
       className={`transition-all  ${width}  duration-100 ease-in-out transform hover:${hoverTranslate} active:scale-90 border ${borderColor} ${bgColor} ${textColor} py-2 px-4 m-1 text-right font-bold`}
-      style={{ textDecoration: 'none' }} // Ensure no underline
+      style={{ textDecoration: "none" }} // Ensure no underline
     >
       {text}
     </Link>
@@ -24,5 +24,3 @@ const CustomButton = ({
 };
 
 export default CustomButton;
-
-
