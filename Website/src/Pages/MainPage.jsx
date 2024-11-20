@@ -7,12 +7,12 @@ const Home = () => {
 
   return (
     <main className="flex flex-col justify-center items-center mt-10">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-4 mb-2">
         {/* Dropdown to select search column */}
         <select
           value={searchColumn}
           onChange={(e) => setSearchColumn(e.target.value)}
-          className="p-2 border border-gray-400 rounded"
+          className="mr-2 p-2 rounded-2xl border-[#007945] border-2 text-black"
         >
           <option value="first">Werkzeug</option>
           <option value="second">Adresse</option>
@@ -20,12 +20,10 @@ const Home = () => {
         {/* Search Input */}
         <input
           type="text"
-          placeholder={`Search in ${
-            searchColumn === "first" ? "Werkzeug" : "Adresse"
-          }`}
+          placeholder={`Suchen... `}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)} // Update search query
-          className="p-2 border border-gray-400 rounded"
+          className="p-2 rounded-2xl border-2 border-[#007945] text-black placeholder-gray-500"
         />
       </div>
       {/* Pass searchQuery and searchColumn as props to Table */}
