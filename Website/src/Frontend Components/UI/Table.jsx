@@ -1,20 +1,36 @@
-// Table.jsx
 import React, { useState, useEffect } from "react";
 
-function Table({ searchQuery, searchColumn }) {
+function Table({ searchQuery }) {
   const [data, setData] = useState([]); // Store fetched data
 
   // Fetch data when authenticated
   useEffect(() => {
-    fetch("https://672255ce2108960b9cc40294.mockapi.io/data")
+    fetch("http://10.0.0.201:8080/mainTable")
       .then((result) => result.json())
-      .then((data) => setData(data)) // Set the fetched data
+      .then((apiData) => {
+        console.log(apiData); // Inspect the fetched data
+
+        const newDataArray = [];
+
+        if (Array.isArray(apiData)) {
+          setData(apiData);
+        } else {
+          // If it's an object, add it to an array
+          newDataArray.push(apiData);
+          setData(newDataArray);
+        }
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const filteredData = data.filter((item) =>
-    item[searchColumn]?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = data.filter(
+    (item) =>
+      item &&
+      item.name &&
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  console.log(filteredData);
 
   return (
     <div className="w-3/4 mx-auto">
@@ -28,14 +44,16 @@ function Table({ searchQuery, searchColumn }) {
         <tbody>
           {filteredData.slice(0, 10).map((item) => (
             <tr
-              key={item.id}
+              key={item._id}
               className="bg-white text-black font-bold text-lg text-center"
             >
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.first}
+                {item.name}
               </td>
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.second}
+                {item.address && item.address.formattedAddressLines
+                  ? item.address.formattedAddressLines.join(", ")
+                  : "Address not available"}
               </td>
             </tr>
           ))}
