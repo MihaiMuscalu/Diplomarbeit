@@ -8,7 +8,7 @@ function Table({ searchQuery }) {
     fetch("http://10.0.0.201:8080/mainTable")
       .then((result) => result.json())
       .then((apiData) => {
-        console.log(apiData); // Inspect the fetched data
+        console.log("API Data: " + apiData); // Inspect the fetched data
 
         const newDataArray = [];
 
@@ -30,7 +30,7 @@ function Table({ searchQuery }) {
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log(filteredData);
+  console.log("Filtered Data: " + filteredData);
 
   return (
     <div className="w-3/4 mx-auto">

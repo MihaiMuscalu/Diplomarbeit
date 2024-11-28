@@ -1,15 +1,11 @@
-import { checkAuth, logout } from "../Security/Auth";
+import { useAuth } from "../Security/Auth";
 import CustomButton from "./SidebarButton";
-import React from "react";
 
 function Sidebar() {
-  const isAuthenticated = checkAuth;
-  const onLogout = logout;
+  const { isAuthenticated, logout } = useAuth(); // Access both state and logout
 
   return (
     <div className="w-1/5 text-white flex flex-col items-start py-4 mt-10">
-      {/* Main Webpage */}
-      co
       <CustomButton
         to={isAuthenticated ? "/Main" : "/"}
         text="Startseite"
@@ -18,7 +14,7 @@ function Sidebar() {
         textColor="text-white" // Change text color
         borderColor="" // Change border color
         hoverTranslate="translate-x-4" // Change hover animation
-        onClick={() => console.log(checkAuth())}
+        onClick={() => console.log(isAuthenticated)}
       />
       <CustomButton
         to="/Strele"
@@ -28,7 +24,7 @@ function Sidebar() {
         textColor="text-white"
         borderColor=""
         hoverTranslate="translate-x-3"
-        onClick={() => console.log(checkAuth())}
+        onClick={() => console.log(isAuthenticated)}
       />
       <CustomButton
         to="/Kontakt"
@@ -38,18 +34,17 @@ function Sidebar() {
         textColor="text-white"
         borderColor=""
         hoverTranslate="translate-x-3"
-        onClick={() => console.log(checkAuth())}
+        onClick={() => console.log(isAuthenticated)}
       />
-      {/* Logout Button */}
       <CustomButton
         to="/"
         text="Logout"
-        width="w-2/4"
         bgColor="bg-red-500"
+        width="w-2/4"
         textColor="text-white"
         borderColor=""
         hoverTranslate="translate-x-2"
-        onClick={onLogout} // Logout on click
+        onClick={logout} // Logout action
       />
       {/* Additional buttons */}
     </div>

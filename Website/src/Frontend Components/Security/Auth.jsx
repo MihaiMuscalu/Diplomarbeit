@@ -1,34 +1,40 @@
-// src/auth.js
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
-// Global authentication state
-// eslint-disable-next-line
-let isAuthenticated = false;
+// Authentication context
+const AuthContext = createContext();
 
-// Functions to get, set, and subscribe to auth status
-export function login() {
-  isAuthenticated = true;
-  window.localStorage.setItem("isAuthenticated", "true");
-}
+// Provider component
+export function AuthProvider({ children }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(checkAuth());
 
-export function logout() {
-  isAuthenticated = false;
-  window.localStorage.removeItem("isAuthenticated");
-}
+  const login = () => {
+    localStorage.setItem("isAuthenticated", "true");
+    setIsAuthenticated(true);
+  };
 
-export function checkAuth() {
-  return window.localStorage.getItem("isAuthenticated") === "true";
-}
-
-// Custom hook to access auth state reactively
-export function useAuth() {
-  const [authState, setAuthState] = useState(checkAuth());
+  const logout = () => {
+    localStorage.removeItem("isAuthenticated");
+    setIsAuthenticated(false);
+  };
 
   useEffect(() => {
-    const handleAuthChange = () => setAuthState(checkAuth());
-    window.addEventListener("storage", handleAuthChange);
-    return () => window.removeEventListener("storage", handleAuthChange);
+    const syncAuthState = () => setIsAuthenticated(checkAuth());
+    window.addEventListener("storage", syncAuthState);
+    return () => window.removeEventListener("storage", syncAuthState);
   }, []);
 
-  return authState;
+  function checkAuth() {
+    return localStorage.getItem("isAuthenticated") === "true";
+  }
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+// Hook to use auth
+export function useAuth() {
+  return useContext(AuthContext);
 }
