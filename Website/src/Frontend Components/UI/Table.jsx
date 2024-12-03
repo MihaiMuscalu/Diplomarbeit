@@ -1,46 +1,48 @@
 import React, { useState, useEffect, useMemo } from "react";
 
 function Table({ searchQuery, searchColumn }) {
-  const [data, setData] = useState([]); // Store fetched data
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Fetch data when authenticated
   useEffect(() => {
-    fetch("http://10.0.0.201:8080/mainTable")
-      .then((result) => result.json())
-      .then((apiData) => {
-        console.log("API Data: ", apiData); // Inspect the fetched data
-
-        const newDataArray = [];
-
-        if (Array.isArray(apiData)) {
-          setData(apiData);
-        } else {
-          newDataArray.push(apiData);
-          setData(newDataArray);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://10.0.0.201:8080/mainTable");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+        const apiData = await response.json();
+        setData(Array.isArray(apiData) ? apiData : [apiData]);
+      } catch (err) {
+        setError("Failed to fetch data");
+        console.error("Error fetching data:", err);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const filteredData = useMemo(() => {
-    console.log("Search Query: ", searchQuery); // Log the search query
+    if (!searchQuery.trim()) return data.slice(0, 10);
+
+    const query = searchQuery.toLowerCase().trim();
     return data
       .filter((item) => {
         if (!item) return false;
 
         if (searchColumn === "first") {
-          return item.name?.toLowerCase().includes(searchQuery.toLowerCase());
+          return item.name?.toLowerCase().includes(query);
         } else {
-          return item.address?.formattedAddressLines
-            ?.join(", ")
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase());
+          const address = item.address?.formattedAddressLines || [];
+          return address.join(", ").toLowerCase().includes(query);
         }
       })
       .slice(0, 10);
   }, [data, searchQuery, searchColumn]);
 
-  console.log("Filtered Data: ", filteredData);
+  if (error) {
+    return <div className="text-red-500 text-center p-4">{error}</div>;
+  }
 
   return (
     <div className="w-3/4 mx-auto">
