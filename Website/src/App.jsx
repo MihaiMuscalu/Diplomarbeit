@@ -6,7 +6,7 @@ import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
 import LoginPage from "./Pages/LoginPage";
 import Layout from "./Layout";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./Frontend Components/Security/ProtectedRoute";
 
 function App() {
   // Router setup

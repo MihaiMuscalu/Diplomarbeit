@@ -17,6 +17,12 @@ export function AuthProvider({ children }) {
     checkInitialAuth();
   }, []);
 
+  useEffect(() => {
+    const syncAuthState = () => setIsAuthenticated(checkAuth());
+    window.addEventListener("storage", syncAuthState);
+    return () => window.removeEventListener("storage", syncAuthState);
+  }, []);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -30,12 +36,6 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("isAuthenticated");
     setIsAuthenticated(false);
   };
-
-  useEffect(() => {
-    const syncAuthState = () => setIsAuthenticated(checkAuth());
-    window.addEventListener("storage", syncAuthState);
-    return () => window.removeEventListener("storage", syncAuthState);
-  }, []);
 
   function checkAuth() {
     return localStorage.getItem("isAuthenticated") === "true";
