@@ -1,5 +1,6 @@
 import { useAuth } from "../Security/Auth";
 import CustomButton from "./SidebarButton";
+import PropTypes from "prop-types";
 
 function Sidebar() {
   const { isAuthenticated, logout } = useAuth(); // Access both state and logout
@@ -50,5 +51,16 @@ function Sidebar() {
     </div>
   );
 }
+
+CustomButton.propTypes = {
+  text: PropTypes.string,
+  width: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  borderColor: PropTypes.string,
+  hoverTranslate: PropTypes.string,
+  to: PropTypes.string,
+  onClick: PropTypes.func,
+};
 
 export default Sidebar;

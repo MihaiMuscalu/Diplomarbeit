@@ -5,7 +5,21 @@ const AuthContext = createContext();
 
 // Provider component
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(checkAuth());
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkInitialAuth = () => {
+      const auth = localStorage.getItem("isAuthenticated") === "true";
+      setIsAuthenticated(auth);
+      setIsLoading(false);
+    };
+    checkInitialAuth();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const login = () => {
     localStorage.setItem("isAuthenticated", "true");

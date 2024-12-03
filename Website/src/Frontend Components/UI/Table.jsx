@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
-function Table({ searchQuery }) {
+function Table({ searchQuery, searchColumn }) {
   const [data, setData] = useState([]); // Store fetched data
 
   // Fetch data when authenticated
@@ -8,14 +8,13 @@ function Table({ searchQuery }) {
     fetch("http://10.0.0.201:8080/mainTable")
       .then((result) => result.json())
       .then((apiData) => {
-        console.log("API Data: " + apiData); // Inspect the fetched data
+        console.log("API Data: ", apiData); // Inspect the fetched data
 
         const newDataArray = [];
 
         if (Array.isArray(apiData)) {
           setData(apiData);
         } else {
-          // If it's an object, add it to an array
           newDataArray.push(apiData);
           setData(newDataArray);
         }
@@ -23,14 +22,25 @@ function Table({ searchQuery }) {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const filteredData = data.filter(
-    (item) =>
-      item &&
-      item.name &&
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredData = useMemo(() => {
+    console.log("Search Query: ", searchQuery); // Log the search query
+    return data
+      .filter((item) => {
+        if (!item) return false;
 
-  console.log("Filtered Data: " + filteredData);
+        if (searchColumn === "first") {
+          return item.name?.toLowerCase().includes(searchQuery.toLowerCase());
+        } else {
+          return item.address?.formattedAddressLines
+            ?.join(", ")
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase());
+        }
+      })
+      .slice(0, 10);
+  }, [data, searchQuery, searchColumn]);
+
+  console.log("Filtered Data: ", filteredData);
 
   return (
     <div className="w-3/4 mx-auto">
@@ -42,7 +52,7 @@ function Table({ searchQuery }) {
           </tr>
         </thead>
         <tbody>
-          {filteredData.slice(0, 10).map((item) => (
+          {filteredData.map((item) => (
             <tr
               key={item._id}
               className="bg-white text-black font-bold text-lg text-center"
