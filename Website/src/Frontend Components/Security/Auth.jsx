@@ -18,10 +18,15 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const syncAuthState = () => setIsAuthenticated(checkAuth());
+    const syncAuthState = () => {
+      const auth = checkAuth();
+      if (auth !== isAuthenticated) {
+        setIsAuthenticated(auth);
+      }
+    };
     window.addEventListener("storage", syncAuthState);
     return () => window.removeEventListener("storage", syncAuthState);
-  }, []);
+  }, [isAuthenticated]);
 
   if (isLoading) {
     return <div>Loading...</div>;

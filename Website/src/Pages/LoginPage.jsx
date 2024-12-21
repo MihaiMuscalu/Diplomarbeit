@@ -5,16 +5,15 @@ import { useAuth } from "../Frontend Components/Security/Auth";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); // Access login from useAuth
+  const { login } = useAuth();
 
-  // Login function to handle authentication
   const handleLogin = () => {
-    login(); // Call login function
-    navigate("/Main"); // Redirect to /Main
+    login();
+    navigate("/Main");
   };
 
   return (
-    <main className="flex justify-center items-center mt-10">
+    <main className="flex justify-center bg-gray-50">
       <Login onLogin={handleLogin} />
     </main>
   );
