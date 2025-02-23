@@ -1,9 +1,10 @@
 import { useAuth } from "../Security/Auth";
+import { useAirtag } from "../Context/AirtagContext";
 import CustomButton from "./SidebarButton";
-import PropTypes from "prop-types";
 
 function Sidebar() {
   const { isAuthenticated, logout } = useAuth(); // Access both state and logout
+  const { openPopup } = useAirtag(); // Add this
 
   return (
     <div className="w-1/5 text-white flex flex-col items-start py-4 mt-10">
@@ -37,6 +38,21 @@ function Sidebar() {
         hoverTranslate="translate-x-3"
         onClick={() => console.log(isAuthenticated)}
       />
+      {isAuthenticated && (
+        <CustomButton
+          to="#"
+          text="Create Airtag"
+          width="w-2/4"
+          bgColor="bg-[#007945]"
+          textColor="text-white"
+          borderColor=""
+          hoverTranslate="translate-x-3"
+          onClick={(e) => {
+            e.preventDefault();
+            openPopup();
+          }}
+        />
+      )}
       <CustomButton
         to="/"
         text="Logout"
@@ -47,20 +63,10 @@ function Sidebar() {
         hoverTranslate="translate-x-2"
         onClick={logout} // Logout action
       />
+
       {/* Additional buttons */}
     </div>
   );
 }
-
-CustomButton.propTypes = {
-  text: PropTypes.string,
-  width: PropTypes.string,
-  bgColor: PropTypes.string,
-  textColor: PropTypes.string,
-  borderColor: PropTypes.string,
-  hoverTranslate: PropTypes.string,
-  to: PropTypes.string,
-  onClick: PropTypes.func,
-};
 
 export default Sidebar;

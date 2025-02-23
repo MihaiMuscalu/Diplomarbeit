@@ -4,6 +4,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Frontend Components/Menu/Sidebar";
 import Footer from "./Frontend Components/UI/Footer";
+import AirtagPopup from "./Frontend Components/UI/AirtagPopup";
 
 import ImageLogo from "./Frontend Components/Images/strele.png";
 
@@ -11,7 +12,7 @@ const Layout = () => {
   return (
     <div className="relative min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-[#007945] text-white flex items-center justify-between py-2 mt-20 px-4">
+      <header className="bg-[#007945] text-white flex items-center justify-between py-2 mt-12 px-4">
         <div className="flex-1" />
         <div className="text-center">
           <h1 className="pt-4 text-base font-bold h-10">
@@ -22,7 +23,7 @@ const Layout = () => {
           <img
             src={ImageLogo}
             alt="Logo"
-            className="absolute right-12 -top-10 h-20"
+            className="absolute right-12 -top-14 h-20"
           />
         </div>
       </header>
@@ -41,6 +42,8 @@ const Layout = () => {
           <Footer />
         </div>
       </div>
+
+      <AirtagPopup />
     </div>
   );
 };

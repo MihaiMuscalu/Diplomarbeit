@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./Frontend Components/Security/Auth"; // Import AuthProvider
+import { AirtagProvider } from "./Frontend Components/Context/AirtagContext";
 import MainPage from "./Pages/MainPage";
 import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
@@ -46,7 +47,9 @@ function App() {
 
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <AirtagProvider>
+        <RouterProvider router={router} />
+      </AirtagProvider>
     </AuthProvider>
   );
 }
