@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./Auth"; // Import your useAuth hook
 
 function ProtectedRoute({ children }) {
-  const isAuthenticated = useAuth(); // Reactive authentication check
+  const { isAuthenticated } = useAuth(); // Destructure isAuthenticated from useAuth
 
   // If the user is not authenticated, redirect to the login page
   return isAuthenticated ? children : <Navigate to="/" />;
