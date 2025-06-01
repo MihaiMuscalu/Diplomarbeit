@@ -31,9 +31,9 @@ function Table({ searchQuery, searchColumn }) {
         if (!item) return false;
 
         if (searchColumn === "first") {
-          return item.name?.toLowerCase().includes(query);
+          return item.tool?.toLowerCase().includes(query);
         } else {
-          const address = item.address?.formattedAddressLines || [];
+          const address = item.realAirtagLocation?.formattedAddressLines || [];
           return address.join(", ").toLowerCase().includes(query);
         }
       })
@@ -49,39 +49,47 @@ function Table({ searchQuery, searchColumn }) {
       <table className="w-full border border-[#007945]">
         <thead>
           <tr className="bg-white text-[#007945] font-bold text-2xl">
-            <th className="border-3 border-[#007945] py-5 px-6">ID</th>
-            <th className="border-3 border-[#007945] py-5 px-6">Werkzeug ID</th>
+            <th className="border-3 border-[#007945] py-5 px-6">Airtag ID</th>
             <th className="border-3 border-[#007945] py-5 px-6">
-              Werkzeug Name
+              Baustelle ID
+            </th>
+            <th className="border-3 border-[#007945] py-5 px-6">Werkzeug</th>
+            <th className="border-3 border-[#007945] py-5 px-6">
+              Werkzeug Nr.
             </th>
             <th className="border-3 border-[#007945] py-5 px-6">Adresse</th>
             <th className="border-3 border-[#007945] py-5 px-6">
-              Baustele Nummer
+              Aktuelle Position
             </th>
           </tr>
         </thead>
         <tbody>
           {filteredData.map((item) => (
             <tr
-              key={item._id}
+              key={item.AirtagId}
               className="bg-white text-black font-bold text-lg text-center"
             >
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item._id}
+                {item.AirtagId}
               </td>
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.toolId}
+                {item.constructionId}
               </td>
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.name}
+                {item.tool}
               </td>
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.address && item.address.formattedAddressLines
-                  ? item.address.formattedAddressLines.join(", ")
-                  : "Address not available"}
+                {item.toolNr}
               </td>
               <td className="border-3 border-[#007945] py-8 px-4">
-                {item.orderer || "Nicht angegeben"}
+                {item.address
+                  ? `${item.address.street}, ${item.address.city} ${item.address.postalcode}`
+                  : "Nicht verfügbar"}
+              </td>
+              <td className="border-3 border-[#007945] py-8 px-4">
+                {item.realAirtagLocation
+                  ? item.realAirtagLocation.mapItemFullAddress
+                  : "Nicht verfügbar"}
               </td>
             </tr>
           ))}

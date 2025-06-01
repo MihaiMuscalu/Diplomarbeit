@@ -41,7 +41,7 @@ function Sidebar() {
       {isAuthenticated && (
         <CustomButton
           to="#"
-          text="Create Airtag"
+          text="Add Airtag"
           width="w-2/4"
           bgColor="bg-[#007945]"
           textColor="text-white"

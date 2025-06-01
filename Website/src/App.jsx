@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./Frontend Components/Security/Auth"; // Import AuthProvider
-import { AirtagProvider } from "./Frontend Components/Context/AirtagContext";
+import { AirtagProvider } from "./Frontend Components/Context/AirTagContext";
 import MainPage from "./Pages/MainPage";
 import StrelePage from "./Pages/StrelePage";
 import KontaktPage from "./Pages/KontaktPage";
